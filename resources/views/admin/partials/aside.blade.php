@@ -25,5 +25,12 @@
                 Project Types
             </a>
         </li>
+        <hr class="text-secondary">
+        <li class="ms-2">
+            <a href="{{ route('admin.technologies.index') }}" class="{{ str_contains( Route::currentRouteName(), 'admin.technologies') ? 'active' : '' }}">
+                <i class="fa-solid fa-microchip fa-lg me-2"></i>
+                Project Technologies
+            </a>
+        </li>
     </ul>
 </aside>

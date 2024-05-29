@@ -6,6 +6,7 @@ use App\Http\Controllers\Guest\PageController;
 use App\Http\Controllers\Admin\TypeController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Admin\TechnologyController;
 
 /*
 |--------------------------------------------------------------------------
@@ -28,6 +29,7 @@ Route::middleware(['auth', 'verified'])
         Route::resource('projects', ProjectController::class);
         Route::resource('types','TypeController::class');
         Route::get('orderBy/{direction}', [ProjectController::class, 'orderBy'])->name('orderBy');
+        Route::resource('technologies', TechnologyController::class);
     });
 
 // Route::get('/dashboard', function () {
