@@ -121,6 +121,30 @@
                 </div>
 
                 <div class="mb-3">
+                    <label for="Technologies" class="form-label d-block">Technologies</label>
+                    <div class="btn-group" role="group" aria-label="Basic checkbox toggle button group">
+
+                        @foreach ($project_technology as $technology)
+                    <input
+                        type="checkbox"
+                        class="btn-check"
+                        id="technology{{$loop->iteration}}"
+                        value="{{$technology->id}}"
+                        name="technologies[]"
+                        autocomplete="off"
+                        @if (!$errors->any() && $project->technologies->contains($technology))
+                            checked
+                        @elseif ($errors->any() && in_array($technology->id, old('technologies', [])))
+                            checked
+                        @endif
+                        >
+                    <label class="btn btn-outline-primary" for="technology{{$loop->iteration}}">{{ $technology->name }}</label>
+                @endforeach
+
+                    </div>
+                </div>
+
+                <div class="mb-3">
                     <label for="is_closed" class="form-label">Status</label>
                     <select class="form-select w-25" name="is_closed" id="is_closed">
                         <option value="0" selected>Ongoing</option>

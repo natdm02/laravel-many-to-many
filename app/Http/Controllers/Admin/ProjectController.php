@@ -39,8 +39,9 @@ class ProjectController extends Controller
     public function create()
     {
         $project_type = Type::all();
-        $project = Project::all();
-        return view('admin.projects.create', compact('project_type', 'project_technology'));
+        $project_technology = Technology::all();
+
+        return view('admin.projects.edit', compact('project', 'project_type', 'project_technology'));
     }
 
     /**
@@ -136,7 +137,14 @@ class ProjectController extends Controller
             Storage::disk('public')->delete($project->image_path);
         }
 
-        $project->delete();
+        if (array_key_exists('technologies', $form_data)) {
+            $project->technologies()->sync($form_data['technologies']);
+        }else{
+            $project->technologies()->detach();
+        }
+
+
+        $project->delete(($form_data));
 
         return redirect()->route('admin.projects.index')->with('deleted', "The Project '$project->name' <- has been succesfully deleted");
     }
