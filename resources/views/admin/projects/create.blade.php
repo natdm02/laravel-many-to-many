@@ -130,6 +130,10 @@
                 </div>
 
                 <div class="mb-3">
+                    <label for="Technologies" class="form-label d-block">Technologies</label>
+                    <div class="btn-group" role="group" aria-label="Basic checkbox toggle button group">
+
+                <div class="mb-3">
                     <label for="is_closed" class="form-label">Status</label>
                     <select class="form-select w-25 @error('is_closed') is-invalid @enderror" name="is_closed" id="is_closed">
                         <option value="" selected>Select a Status</option>
